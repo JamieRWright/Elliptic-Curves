@@ -10,7 +10,9 @@ namespace Elliptic_Curves
     /// An elliptic curve over Fp is the solution set to an equation of the form
     /// y^2 = x^3 + ax + b
     /// Where a,b in Fp satisfy 4a^3 + 27b^2 != 0
+    /// 
     /// This set also includes a point at infinity denoted O
+    /// This point at infinity is to be thought of as being located far away along the y-direction.
     /// 
     /// We use E[a,b] to denote an elliptic curve y^2 = x^3 + ax + b
     /// 
@@ -23,6 +25,8 @@ namespace Elliptic_Curves
     /// In essence, we want to "add" two points, but this is done by taking tangents
     /// Tangents are not well defined when we have repeated roots
     /// I can highlight this clearer in person but see the the "Add" function
+    /// 
+    /// 
     /// </summary>
     internal class EllipticCurve
     {
@@ -107,6 +111,25 @@ namespace Elliptic_Curves
                     return y;
             }
             return 0;
+        }
+        /// <summary>
+        /// Generate binary operation on an elliptic curve over Fp which satisfy properties of an abelian group
+        /// Explicitly 5 properties will hold:
+        /// 
+        /// 1: For P1, P2 in E, then P1 + P2 is in E (Closure under addition)
+        /// 2: The element O in E exists and holds such that O + P is in E for all P in E (Identity)
+        /// 3: P1 + (P2 + P3) = (P1 + P2) + P3 for all P1, P2, P3 in E (Assosiative Law)
+        /// 4: For all (x, y) in E, there exists -(x, y) in E such that (x, y) + -(x, y) = O (when (x,y) != O, this is simply (x, -y)) (Inverse)
+        /// 
+        /// We now have a group, but it is an abelian group as the following holds
+        /// 5: P1 + P2 = P2 + P1 for all P1, P2 in E
+        /// </summary>
+        /// <param name="P1"></param>
+        /// <param name="P2"></param>
+        /// <returns></returns>
+        public Tuple<int, int> Add(Tuple<int, int> P1, Tuple<int, int> P2)
+        {
+            return null;
         }
         static void Main(string[] args)
         {
